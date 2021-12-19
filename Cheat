@@ -24,10 +24,13 @@ local TextLabel = Instance.new("TextLabel")
 local AFS = Instance.new("TextLabel")
 local AFSCODE = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
+local AFSORB = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
 local KickCounter = Instance.new("TextLabel")
 local Kick = Instance.new("TextButton")
 local KickCounter_2 = Instance.new("TextLabel")
 
+local bb = game:service'VirtualUser'
 local StarterGui = game:GetService("StarterGui")
 local CodeEvent = game:GetService("ReplicatedStorage").RSPackage.Events.GeneralFunction
 --Bools
@@ -225,6 +228,7 @@ CheckGame.MouseButton1Click:Connect(function()
 		print("AFS FOUND")
 		AFS.Visible = true
 		AFSCODE.Visible = true
+		AFSORB.Visible = true
 		CheckGame:Destroy()
 	end
 end)
@@ -299,6 +303,26 @@ end)
 
 UICorner_3.Parent = AFSCODE
 
+
+AFSORB.Name = "AFSORB"
+AFSORB.Parent = Settings
+AFSORB.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+AFSORB.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+AFSORB.Size = UDim2.new(0.649999976, 0, 0.159999996, 0)
+AFSORB.SizeConstraint = Enum.SizeConstraint.RelativeXX
+AFSORB.Font = Enum.Font.SourceSans
+AFSORB.Text = "Tp to Orb"
+AFSORB.TextColor3 = Color3.fromRGB(255, 255, 255)
+AFSORB.TextSize = 14.000
+AFSORB.Visible = false
+AFSORB.MouseButton1Click:Connect(function()
+	if game.Workspace.MouseIgnore:FindFirstChild("Model") ~= nil then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.MouseIgnore:FindFirstChild("Model").ClickPart.CFrame
+	end
+end)
+
+UICorner_4.Parent = AFSORB
+
 SettingButton.Name = "SettingButton"
 SettingButton.Parent = Main
 SettingButton.BackgroundTransparency = 1.000
@@ -333,7 +357,6 @@ KickCounter_2.TextScaled = true
 KickCounter_2.TextSize = 14.000
 KickCounter_2.TextWrapped = true
 
-local bb = game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
 	if Active == true then
 		bb:CaptureController()bb:ClickButton2(Vector2.new())
