@@ -373,7 +373,7 @@ KickCounter_2.Size = UDim2.new(0.0906592458, 0, 0.0776982307, 0)
 KickCounter_2.SizeConstraint = Enum.SizeConstraint.RelativeXX
 KickCounter_2.Visible = false
 KickCounter_2.Font = Enum.Font.SourceSans
-KickCounter_2.Text = KickTries
+KickCounter_2.Text = "0"
 KickCounter_2.TextColor3 = Color3.fromRGB(231, 231, 231)
 KickCounter_2.TextScaled = true
 KickCounter_2.TextSize = 14.000
@@ -386,3 +386,9 @@ game:service'Players'.LocalPlayer.Idled:connect(function()
 	end
 end)
 
+spawn(function()
+while true do
+wait(0.5)
+KickCounter_2.Text = KickTries
+end
+end)
