@@ -16,11 +16,31 @@ local Staus = Instance.new("TextButton")
 local X = Instance.new("TextButton")
 local Settings = Instance.new("Frame")
 local SettingButton = Instance.new("ImageButton")
-local StarterGui = game:GetService("StarterGui")
+local CheckGame = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local Shadow = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local TextLabel = Instance.new("TextLabel")
+local AFS = Instance.new("TextLabel")
+local AFSCODE = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local KickCounter = Instance.new("TextLabel")
+local Kick = Instance.new("TextButton")
+local KickCounter_2 = Instance.new("TextLabel")
 
+local StarterGui = game:GetService("StarterGui")
+local CodeEvent = game:GetService("ReplicatedStorage").RSPackage.Events.GeneralFunction
 --Bools
 local Active = false
+local KickActive = false
+local KickTries = 0
 
+local CodeE = "Code"
+local Count
+
+-- Array
+local CodeArray= {"300ksubstigretv", "emperadorwapo", "sub2defildplays", "2millionsingroup!", "Emperador2kcode", "Dwax10K", "1billionvisits!", "frangonewcode", "emperadorstar", "kelvin600k", "Mrrhino50k", "medtw50k", "Defildpromo", "elemperador100k!", "bigboi100k", "Subtodefildplays", "Defildstream", "NNG", "sub2hakimbo", "emperadorsubs", "defild700k", "Tigre200k", "sub2emperadormaxi", "n1colas2sub", "tigretvsub", "subfrango", "L3NI", "Sub2tanqr", "sub2tplanetmilo", "frango2yen", "Defildyen", "subtomrrhino", "sub2razorfishgaming", "subtokelvingts"}
+local CodeIndex = 1
 --Properties:
 
 StarterGui:SetCore("SendNotification", {
@@ -145,6 +165,140 @@ Settings.Size = UDim2.new(1, 0, 1.03999996, 0)
 Settings.SizeConstraint = Enum.SizeConstraint.RelativeYY
 Settings.Visible = false
 
+KickCounter.Name = "Kick Counter"
+KickCounter.Parent = Settings
+KickCounter.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+KickCounter.BackgroundTransparency = 1.000
+KickCounter.Position = UDim2.new(0.0500000007, 0, 0.03125, 0)
+KickCounter.Size = UDim2.new(0.579999983, 0, 0.159999996, 0)
+KickCounter.SizeConstraint = Enum.SizeConstraint.RelativeYY
+KickCounter.Font = Enum.Font.SourceSans
+KickCounter.Text = "Kick Counter:"
+KickCounter.TextColor3 = Color3.fromRGB(255, 255, 255)
+KickCounter.TextScaled = true
+KickCounter.TextSize = 14.000
+KickCounter.TextWrapped = true
+
+Kick.Name = "Kick"
+Kick.Parent = Settings
+Kick.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Kick.BackgroundTransparency = 1.000
+Kick.Position = UDim2.new(0.647419393, 0, 0.0375580788, 0)
+Kick.Size = UDim2.new(0.270000011, 0, 0.140000001, 0)
+Kick.SizeConstraint = Enum.SizeConstraint.RelativeYY
+Kick.Font = Enum.Font.SourceSans
+Kick.Text = "Off"
+Kick.TextColor3 = Color3.fromRGB(255, 0, 4)
+Kick.TextScaled = true
+Kick.TextSize = 14.000
+Kick.TextWrapped = true
+Kick.MouseButton1Click:Connect(function()
+	if KickActive == false then
+		KickActive = true
+		Kick.Text = "On"
+		Kick.TextColor3 = Color3.fromRGB(0, 255, 0)
+		KickCounter_2.Visible = true
+	else
+		KickActive = false
+		Kick.Text = "Off"
+		Kick.TextColor3 = Color3.fromRGB(255, 0, 0)
+		KickCounter_2.Visible = false
+	end
+end)
+
+CheckGame.Name = "CheckGame"
+CheckGame.Parent = Settings
+CheckGame.BackgroundColor3 = Color3.fromRGB(77, 100, 150)
+CheckGame.BorderSizePixel = 0
+CheckGame.Position = UDim2.new(0.0564516261, 0, 0.727632403, 0)
+CheckGame.Size = UDim2.new(0, 109, 0, 28)
+CheckGame.ZIndex = 2
+CheckGame.Font = Enum.Font.GothamSemibold
+CheckGame.Text = ""
+CheckGame.TextColor3 = Color3.fromRGB(31, 31, 31)
+CheckGame.TextScaled = true
+CheckGame.TextSize = 14.000
+CheckGame.TextWrapped = true
+CheckGame.MouseButton1Click:Connect(function()
+	print("GameID: ".. game.GameId)
+	if game.GameId == 1348402608 then
+		print("AFS FOUND")
+		AFS.Visible = true
+		AFSCODE.Visible = true
+		CheckGame:Destroy()
+	end
+end)
+
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = CheckGame
+
+Shadow.Name = "Shadow"
+Shadow.Parent = CheckGame
+Shadow.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Shadow.BorderSizePixel = 0
+Shadow.Size = UDim2.new(1, 0, 1, 4)
+
+UICorner_2.CornerRadius = UDim.new(1, 0)
+UICorner_2.Parent = Shadow
+
+TextLabel.Parent = CheckGame
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.5, 0, 0.571428597, 0)
+TextLabel.Size = UDim2.new(1, -20, 1.14285719, -20)
+TextLabel.ZIndex = 2
+TextLabel.Font = Enum.Font.GothamSemibold
+TextLabel.Text = "Check Game"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+AFS.Name = "AFS"
+AFS.Parent = Settings
+AFS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AFS.BackgroundTransparency = 1.000
+AFS.Position = UDim2.new(0.0903226808, 0, 0.232863024, 0)
+AFS.Size = UDim2.new(0.764516115, 0, 0.113473959, 0)
+AFS.SizeConstraint = Enum.SizeConstraint.RelativeYY
+AFS.Visible = false
+AFS.Font = Enum.Font.SourceSans
+AFS.Text = "----------AFS---------"
+AFS.TextColor3 = Color3.fromRGB(255, 255, 255)
+AFS.TextScaled = true
+AFS.TextSize = 14.000
+AFS.TextWrapped = true
+
+AFSCODE.Name = "AFSCODE"
+AFSCODE.Parent = Settings
+AFSCODE.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+AFSCODE.Position = UDim2.new(0.0241935477, 0, 0.34142381, 0)
+AFSCODE.Size = UDim2.new(0.649999976, 0, 0.159999996, 0)
+AFSCODE.SizeConstraint = Enum.SizeConstraint.RelativeXX
+AFSCODE.Visible = false
+AFSCODE.Font = Enum.Font.SourceSans
+AFSCODE.Text = "Redeem Codes"
+AFSCODE.TextColor3 = Color3.fromRGB(255, 255, 255)
+AFSCODE.TextSize = 14.000
+AFSCODE.MouseButton1Click:Connect(function()
+	AFSCODE:Destroy()
+	print("Looping Through: " .. #CodeArray .. " Codes")
+	spawn(function()
+		for Count = 1, #CodeArray do
+		wait(0.4)
+		print(Count)
+		local dialogue = CodeArray[CodeIndex]
+		CodeEvent:InvokeServer(CodeE, dialogue)
+		CodeIndex = CodeIndex + 1
+		end
+	end)
+end)
+
+UICorner_3.Parent = AFSCODE
+
 SettingButton.Name = "SettingButton"
 SettingButton.Parent = Main
 SettingButton.BackgroundTransparency = 1.000
@@ -164,9 +318,26 @@ SettingButton.MouseButton1Click:Connect(function()
 	end
 end)
 
+KickCounter_2.Name = "KickCounter"
+KickCounter_2.Parent = Main
+KickCounter_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+KickCounter_2.BackgroundTransparency = 1.000
+KickCounter_2.Position = UDim2.new(8.38395025e-08, 0, 0.766129017, 0)
+KickCounter_2.Size = UDim2.new(0.0906592458, 0, 0.0776982307, 0)
+KickCounter_2.SizeConstraint = Enum.SizeConstraint.RelativeXX
+KickCounter_2.Visible = false
+KickCounter_2.Font = Enum.Font.SourceSans
+KickCounter_2.Text = KickTries
+KickCounter_2.TextColor3 = Color3.fromRGB(231, 231, 231)
+KickCounter_2.TextScaled = true
+KickCounter_2.TextSize = 14.000
+KickCounter_2.TextWrapped = true
+
 local bb = game:service'VirtualUser'
 game:service'Players'.LocalPlayer.Idled:connect(function()
 	if Active == true then
 		bb:CaptureController()bb:ClickButton2(Vector2.new())
+		KickTries = KickTries + 1
 	end
 end)
+
