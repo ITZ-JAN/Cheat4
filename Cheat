@@ -26,6 +26,8 @@ local AFSCODE = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
 local AFSORB = Instance.new("TextButton")
 local UICorner_4 = Instance.new("UICorner")
+local AFSCHIKARA = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
 local KickCounter = Instance.new("TextLabel")
 local Kick = Instance.new("TextButton")
 local KickCounter_2 = Instance.new("TextLabel")
@@ -229,6 +231,7 @@ CheckGame.MouseButton1Click:Connect(function()
 		AFS.Visible = true
 		AFSCODE.Visible = true
 		AFSORB.Visible = true
+		AFSCHIKARA.Visible = true
 		CheckGame:Destroy()
 	end
 end)
@@ -279,8 +282,8 @@ AFS.TextWrapped = true
 AFSCODE.Name = "AFSCODE"
 AFSCODE.Parent = Settings
 AFSCODE.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-AFSCODE.Position = UDim2.new(0.0241935477, 0, 0.34142381, 0)
-AFSCODE.Size = UDim2.new(0.649999976, 0, 0.159999996, 0)
+AFSCODE.Position = UDim2.new(0.0241935477, 0, 0.39770031, 0)
+AFSCODE.Size = UDim2.new(0.623226166, 0, 0.151364923, 0)
 AFSCODE.SizeConstraint = Enum.SizeConstraint.RelativeXX
 AFSCODE.Visible = false
 AFSCODE.Font = Enum.Font.SourceSans
@@ -307,14 +310,14 @@ UICorner_3.Parent = AFSCODE
 AFSORB.Name = "AFSORB"
 AFSORB.Parent = Settings
 AFSORB.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
-AFSORB.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-AFSORB.Size = UDim2.new(0.649999976, 0, 0.159999996, 0)
+AFSORB.Position = UDim2.new(0.0199998431, 0, 0.56936729, 0)
+AFSORB.Size = UDim2.new(0.649999976, 0, 0.138337478, 0)
 AFSORB.SizeConstraint = Enum.SizeConstraint.RelativeXX
+AFSORB.Visible = false
 AFSORB.Font = Enum.Font.SourceSans
 AFSORB.Text = "Tp to Orb"
 AFSORB.TextColor3 = Color3.fromRGB(255, 255, 255)
 AFSORB.TextSize = 14.000
-AFSORB.Visible = false
 AFSORB.MouseButton1Click:Connect(function()
 	if game.Workspace.MouseIgnore:FindFirstChild("Model") ~= nil then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.MouseIgnore:FindFirstChild("Model").ClickPart.CFrame
@@ -322,6 +325,25 @@ AFSORB.MouseButton1Click:Connect(function()
 end)
 
 UICorner_4.Parent = AFSORB
+
+AFSCHIKARA.Name = "AFSCHIKARA"
+AFSCHIKARA.Parent = Settings
+AFSCHIKARA.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+AFSCHIKARA.Position = UDim2.new(0.0199998431, 0, 0.759367287, 0)
+AFSCHIKARA.Size = UDim2.new(0.649999976, 0, 0.138337478, 0)
+AFSCHIKARA.SizeConstraint = Enum.SizeConstraint.RelativeXX
+AFSCHIKARA.Visible = false
+AFSCHIKARA.Font = Enum.Font.SourceSans
+AFSCHIKARA.Text = "Tp to Crate"
+AFSCHIKARA.TextColor3 = Color3.fromRGB(255, 255, 255)
+AFSCHIKARA.TextSize = 14.000
+AFSCHIKARA.MouseButton1Click:Connect(function()
+	if game.Workspace.MouseIgnore:FindFirstChild("ChikaraCrate") ~= nil then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.MouseIgnore:FindFirstChild("ChikaraCrate").ClickBox.CFrame
+	end
+end)
+
+UICorner_5.Parent = AFSCHIKARA
 
 SettingButton.Name = "SettingButton"
 SettingButton.Parent = Main
