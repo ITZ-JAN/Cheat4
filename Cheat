@@ -1,0 +1,172 @@
+wait(0.5)
+
+if game.Players.LocalPlayer.PlayerGui:FindFirstChild("AAFK") ~= nil then
+	local obj = game.Players.LocalPlayer.PlayerGui:FindFirstChild("AAFK")
+	obj:Destroy()
+	print("UI Updated")
+end
+
+local ScreenGui = Instance.new("ScreenGui")
+local Icon = Instance.new("ImageButton")
+local Draggable = Instance.new("Frame")
+local Main = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local StatusText = Instance.new("TextLabel")
+local Staus = Instance.new("TextButton")
+local X = Instance.new("TextButton")
+local Settings = Instance.new("Frame")
+local SettingButton = Instance.new("ImageButton")
+local StarterGui = game:GetService("StarterGui")
+
+--Bools
+local Active = false
+
+--Properties:
+
+StarterGui:SetCore("SendNotification", {
+	Title = game.Players.LocalPlayer.Name,
+	Text = "Welcome!",
+	Duration = 5,
+	Icon = "rbxassetid://7151408467"
+})
+
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Name = "AAFK"
+ScreenGui.ResetOnSpawn = false
+
+Icon.Name = "Icon"
+Icon.Parent = ScreenGui
+Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Icon.BackgroundTransparency = 1.000
+Icon.Position = UDim2.new(0, 0, 0.0738255009, 0)
+Icon.Size = UDim2.new(0.0270000007, 0, 0.0540000014, 0)
+Icon.Image = "http://www.roblox.com/asset/?id=1221605498"
+Icon.MouseButton1Click:Connect(function()
+	if Draggable.Visible == true then
+		Draggable.Visible = false
+	else
+		Draggable.Visible = true
+	end
+end)
+
+Draggable.Name = "Draggable"
+Draggable.Parent = ScreenGui
+Draggable.BackgroundColor3 = Color3.fromRGB(59, 59, 59)
+Draggable.BorderSizePixel = 0
+Draggable.Position = UDim2.new(0.364041597, 0, 0.391670972, 0)
+Draggable.Size = UDim2.new(0, 366, 0, 129)
+Draggable.Visible = false
+Draggable.Active = true
+Draggable.Draggable = true
+
+Main.Name = "Main"
+Main.Parent = Draggable
+Main.BackgroundColor3 = Color3.fromRGB(59, 59, 59)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(-0.000980734825, 0, 0.0372669399, 0)
+Main.Size = UDim2.new(0, 364, 0, 124)
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.280219793, 0, -0.0403225794, 0)
+Title.Size = UDim2.new(0.377999991, 0, 0.270000011, 0)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "Anti-AFK"
+Title.TextColor3 = Color3.fromRGB(231, 0, 3)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+StatusText.Name = "StatusText"
+StatusText.Parent = Main
+StatusText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+StatusText.BackgroundTransparency = 1.000
+StatusText.Position = UDim2.new(0.197802201, 0, 0.387096792, 0)
+StatusText.Size = UDim2.new(0.377999991, 0, 0.0780000016, 0)
+StatusText.SizeConstraint = Enum.SizeConstraint.RelativeXX
+StatusText.Font = Enum.Font.SourceSans
+StatusText.Text = "Status:"
+StatusText.TextColor3 = Color3.fromRGB(231, 231, 231)
+StatusText.TextScaled = true
+StatusText.TextSize = 14.000
+StatusText.TextWrapped = true
+
+Staus.Name = "Staus"
+Staus.Parent = Main
+Staus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Staus.BackgroundTransparency = 1.000
+Staus.Position = UDim2.new(0.362637371, 0, 0.387096792, 0)
+Staus.Size = UDim2.new(0.377000004, 0, 0.0769999996, 0)
+Staus.SizeConstraint = Enum.SizeConstraint.RelativeXX
+Staus.Font = Enum.Font.SourceSans
+Staus.Text = "Off"
+Staus.TextColor3 = Color3.fromRGB(255, 10, 14)
+Staus.TextScaled = true
+Staus.TextSize = 14.000
+Staus.TextWrapped = true
+Staus.MouseButton1Click:Connect(function()
+	if Active == false then
+		Active = true
+		Staus.Text = "On"
+		Staus.TextColor3 = Color3.fromRGB(4, 255, 0)
+	else
+		Active = false
+		Staus.Text = "Off"
+		Staus.TextColor3 = Color3.fromRGB(255, 10, 14)
+	end
+end)
+
+X.Name = "X"
+X.Parent = Main
+X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+X.BackgroundTransparency = 1.000
+X.Position = UDim2.new(0, 0, -0.0403225794, 0)
+X.Size = UDim2.new(0.074000001, 0, 0.159999996, 0)
+X.Font = Enum.Font.SourceSans
+X.Text = "X"
+X.TextColor3 = Color3.fromRGB(255, 0, 4)
+X.TextScaled = true
+X.TextSize = 14.000
+X.TextWrapped = true
+X.MouseButton1Click:Connect(function()
+	Draggable.Visible = false
+end)
+
+Settings.Name = "Settings"
+Settings.Parent = Main
+Settings.BackgroundColor3 = Color3.fromRGB(59, 59, 59)
+Settings.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Settings.Position = UDim2.new(1.00546443, 0, -0.0387696289, 0)
+Settings.Size = UDim2.new(1, 0, 1.03999996, 0)
+Settings.SizeConstraint = Enum.SizeConstraint.RelativeYY
+Settings.Visible = false
+
+SettingButton.Name = "SettingButton"
+SettingButton.Parent = Main
+SettingButton.BackgroundTransparency = 1.000
+SettingButton.LayoutOrder = 1
+SettingButton.Position = UDim2.new(0.934065938, 0, 0, 0)
+SettingButton.Size = UDim2.new(0.204999998, 0, 0.204999998, 0)
+SettingButton.SizeConstraint = Enum.SizeConstraint.RelativeYY
+SettingButton.ZIndex = 2
+SettingButton.Image = "rbxassetid://3926307971"
+SettingButton.ImageRectOffset = Vector2.new(324, 124)
+SettingButton.ImageRectSize = Vector2.new(36, 36)
+SettingButton.MouseButton1Click:Connect(function()
+	if Settings.Visible == false then
+		Settings.Visible = true
+	else
+		Settings.Visible = false
+	end
+end)
+
+local bb = game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+	if Active == true then
+		bb:CaptureController()bb:ClickButton2(Vector2.new())
+	end
+end)
