@@ -39,6 +39,7 @@ local CodeEvent = game:GetService("ReplicatedStorage").RSPackage.Events.GeneralF
 local Active = false
 local KickActive = false
 local KickTries = 0
+local chikara = false
 
 local CodeE = "Code"
 local Count
@@ -334,13 +335,30 @@ AFSCHIKARA.Size = UDim2.new(0.649999976, 0, 0.138337478, 0)
 AFSCHIKARA.SizeConstraint = Enum.SizeConstraint.RelativeXX
 AFSCHIKARA.Visible = false
 AFSCHIKARA.Font = Enum.Font.SourceSans
-AFSCHIKARA.Text = "Tp to Crate"
+AFSCHIKARA.Text = "Start AutoFarm"
 AFSCHIKARA.TextColor3 = Color3.fromRGB(255, 255, 255)
 AFSCHIKARA.TextSize = 14.000
 AFSCHIKARA.MouseButton1Click:Connect(function()
-	if game.Workspace.MouseIgnore:FindFirstChild("ChikaraCrate") ~= nil then
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.MouseIgnore:FindFirstChild("ChikaraCrate").ClickBox.CFrame
-	end
+	if chikara == false then
+		chikara = true
+		AFSCHIKARA.Text = "Stop AutoFarm"
+		spawn(function()
+			while chikara == true do
+				wait(0.5)
+				if game.Workspace.MouseIgnore:FindFirstChild("ChikaraCrate") ~= nil then
+					local Target = game.Workspace.MouseIgnore:FindFirstChild("ChikaraCrate")
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Target.ClickBox.CFrame
+					wait(4)
+					if chikara == true then
+						fireclickdetector(Target.ClickBox.ClickDetector)
+					end
+				end
+			end
+		end)
+	else
+		chikara = false
+		AFSCHIKARA.Text = "Start AutoFarm"
+		end
 end)
 
 UICorner_5.Parent = AFSCHIKARA
@@ -373,7 +391,7 @@ KickCounter_2.Size = UDim2.new(0.0906592458, 0, 0.0776982307, 0)
 KickCounter_2.SizeConstraint = Enum.SizeConstraint.RelativeXX
 KickCounter_2.Visible = false
 KickCounter_2.Font = Enum.Font.SourceSans
-KickCounter_2.Text = "0"
+KickCounter_2.Text = KickTries
 KickCounter_2.TextColor3 = Color3.fromRGB(231, 231, 231)
 KickCounter_2.TextScaled = true
 KickCounter_2.TextSize = 14.000
@@ -386,9 +404,3 @@ game:service'Players'.LocalPlayer.Idled:connect(function()
 	end
 end)
 
-spawn(function()
-while true do
-wait(0.5)
-KickCounter_2.Text = KickTries
-end
-end)
