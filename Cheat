@@ -341,7 +341,7 @@ AFSCHIKARA.TextSize = 14.000
 AFSCHIKARA.MouseButton1Click:Connect(function()
 	if chikara == false then
 		chikara = true
-		AFSCHIKARA.Text = "Stop AutoChikara"
+		AFSCHIKARA.Text = "Stop AutoChikaraa"
 		spawn(function()
 			while chikara == true do
 				wait(0.5)
