@@ -335,13 +335,13 @@ AFSCHIKARA.Size = UDim2.new(0.649999976, 0, 0.138337478, 0)
 AFSCHIKARA.SizeConstraint = Enum.SizeConstraint.RelativeXX
 AFSCHIKARA.Visible = false
 AFSCHIKARA.Font = Enum.Font.SourceSans
-AFSCHIKARA.Text = "Start AutoFarm"
+AFSCHIKARA.Text = "Start AutoChikara"
 AFSCHIKARA.TextColor3 = Color3.fromRGB(255, 255, 255)
 AFSCHIKARA.TextSize = 14.000
 AFSCHIKARA.MouseButton1Click:Connect(function()
 	if chikara == false then
 		chikara = true
-		AFSCHIKARA.Text = "Stop AutoFarm"
+		AFSCHIKARA.Text = "Stop AutoChikara"
 		spawn(function()
 			while chikara == true do
 				wait(0.5)
@@ -357,7 +357,7 @@ AFSCHIKARA.MouseButton1Click:Connect(function()
 		end)
 	else
 		chikara = false
-		AFSCHIKARA.Text = "Start AutoFarm"
+		AFSCHIKARA.Text = "Start AutoChikara"
 		end
 end)
 
